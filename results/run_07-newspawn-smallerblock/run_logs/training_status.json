@@ -1,0 +1,30 @@
+{
+    "Shooter": {
+        "elo": 1200.5,
+        "checkpoints": [
+            {
+                "steps": 179927,
+                "file_path": "results\\run_07-newspawn-smallerblock\\Shooter\\Shooter-179927.onnx",
+                "reward": -1.695652186870575,
+                "creation_time": 1786192983.0818155,
+                "auxillary_file_paths": [
+                    "results\\run_07-newspawn-smallerblock\\Shooter\\Shooter-179927.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 179927,
+            "file_path": "results\\run_07-newspawn-smallerblock\\Shooter.onnx",
+            "reward": -1.695652186870575,
+            "creation_time": 1786192983.0818155,
+            "auxillary_file_paths": [
+                "results\\run_07-newspawn-smallerblock\\Shooter\\Shooter-179927.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

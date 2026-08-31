@@ -1,0 +1,218 @@
+default_settings: null
+behaviors:
+  Shooter:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 512
+      buffer_size: 20480
+      learning_rate: 0.0001
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: false
+      learning_rate_schedule: linear
+      beta_schedule: linear
+      epsilon_schedule: linear
+    checkpoint_interval: 500000
+    network_settings:
+      normalize: true
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      memory:
+        sequence_length: 64
+        memory_size: 128
+      goal_conditioning_type: hyper
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+          deterministic: false
+    init_path: null
+    keep_checkpoints: 5
+    even_checkpoints: false
+    max_steps: 10000000
+    time_horizon: 256
+    summary_freq: 10000
+    threaded: false
+    self_play:
+      save_steps: 20000
+      team_change: 100000
+      swap_steps: 10000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+    behavioral_cloning: null
+env_settings:
+  env_path: null
+  env_args: null
+  base_port: 5005
+  num_envs: 1
+  num_areas: 1
+  timeout_wait: 60
+  seed: -1
+  max_lifetime_restarts: 10
+  restarts_rate_limit_n: 1
+  restarts_rate_limit_period_s: 60
+engine_settings:
+  width: 84
+  height: 84
+  quality_level: 5
+  time_scale: 20
+  target_frame_rate: -1
+  capture_frame_rate: 60
+  no_graphics: false
+  no_graphics_monitor: false
+environment_parameters:
+  block_size:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1424
+          value: 0.0
+      name: NoCover
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.05
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1425
+          value: 2.0
+      name: Pillar
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.1
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1426
+          value: 4.0
+      name: SmallBlock
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.175
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1427
+          value: 8.0
+      name: MediumBlock
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.275
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1428
+          value: 12.0
+      name: FullBlock
+      completion_criteria: null
+  cheat_rate:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1429
+          value: 0.03
+      name: HonestBaseline
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.275
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1430
+          value: 0.15
+      name: CheatsIntroduced
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.4
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1431
+          value: 0.3
+      name: CheatsCommon
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.55
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1432
+          value: 0.5
+      name: CheatsBalanced
+      completion_criteria: null
+  multi_cheat:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1433
+          value: 0.0
+      name: SingleCheatOnly
+      completion_criteria:
+        behavior: Shooter
+        measure: progress
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1434
+          value: 1.0
+      name: CombinationsAllowed
+      completion_criteria: null
+checkpoint_settings:
+  run_id: run_10-finalRun-multiCheatsAdded
+  initialize_from: null
+  load_model: false
+  resume: false
+  force: true
+  train_model: false
+  inference: false
+  results_dir: results
+torch_settings:
+  device: null
+debug: false

@@ -1,0 +1,113 @@
+behaviors:
+  Shooter:
+    trainer_type: ppo
+
+    hyperparameters:
+      batch_size: 512
+      buffer_size: 20480
+      learning_rate: 0.0001
+
+    network_settings:
+      normalize: true
+      hidden_units: 128
+      num_layers: 2
+      memory:
+        sequence_length: 64
+        memory_size: 128
+
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+
+    self_play:
+      save_steps: 20000
+      team_change: 100000
+      swap_steps: 10000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+
+    keep_checkpoints: 5
+    max_steps: 10000000
+    time_horizon: 256
+    summary_freq: 10000
+
+environment_parameters:
+  block_size:
+    curriculum:
+      - name: NoCover
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.05
+        value: 0.0
+
+      - name: Pillar
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.1
+        value: 2.0
+
+      - name: SmallBlock
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.175
+        value: 4.0
+
+      - name: MediumBlock
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.275
+        value: 8.0
+
+      - name: FullBlock
+        value: 12.0
+
+  cheat_rate:
+    curriculum:
+      - name: HonestBaseline
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.275
+        value: 0.03
+
+      - name: CheatsIntroduced
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.4
+        value: 0.15
+
+      - name: CheatsCommon
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.55
+        value: 0.3
+      - name: CheatsBalanced
+        value: 0.5
+
+  multi_cheat:
+    curriculum:
+      - name: SingleCheatOnly
+        completion_criteria:
+          measure: progress
+          behavior: Shooter
+          min_lesson_length: 100
+          threshold: 0.8
+        value: 0.0
+
+      - name: CombinationsAllowed
+        value: 1.0

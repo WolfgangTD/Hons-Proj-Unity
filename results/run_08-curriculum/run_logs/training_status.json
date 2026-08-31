@@ -1,0 +1,69 @@
+{
+    "block_size": {
+        "lesson_num": 3
+    },
+    "Shooter": {
+        "checkpoints": [
+            {
+                "steps": 499993,
+                "file_path": "results\\run_08-curriculum\\Shooter\\Shooter-499993.onnx",
+                "reward": 0.2983278381553563,
+                "creation_time": 1786194072.9733603,
+                "auxillary_file_paths": [
+                    "results\\run_08-curriculum\\Shooter\\Shooter-499993.pt"
+                ]
+            },
+            {
+                "steps": 999954,
+                "file_path": "results\\run_08-curriculum\\Shooter\\Shooter-999954.onnx",
+                "reward": 0.820572695717579,
+                "creation_time": 1786194819.4237573,
+                "auxillary_file_paths": [
+                    "results\\run_08-curriculum\\Shooter\\Shooter-999954.pt"
+                ]
+            },
+            {
+                "steps": 1499866,
+                "file_path": "results\\run_08-curriculum\\Shooter\\Shooter-1499866.onnx",
+                "reward": 1.392262822656489,
+                "creation_time": 1786195575.4735057,
+                "auxillary_file_paths": [
+                    "results\\run_08-curriculum\\Shooter\\Shooter-1499866.pt"
+                ]
+            },
+            {
+                "steps": 1999851,
+                "file_path": "results\\run_08-curriculum\\Shooter\\Shooter-1999851.onnx",
+                "reward": 0.48938129376620054,
+                "creation_time": 1786196336.6927302,
+                "auxillary_file_paths": [
+                    "results\\run_08-curriculum\\Shooter\\Shooter-1999851.pt"
+                ]
+            },
+            {
+                "steps": 2348516,
+                "file_path": "results\\run_08-curriculum\\Shooter\\Shooter-2348516.onnx",
+                "reward": 0.9209294664232355,
+                "creation_time": 1786196896.7718728,
+                "auxillary_file_paths": [
+                    "results\\run_08-curriculum\\Shooter\\Shooter-2348516.pt"
+                ]
+            }
+        ],
+        "elo": 2045.0480842299116,
+        "final_checkpoint": {
+            "steps": 2348516,
+            "file_path": "results\\run_08-curriculum\\Shooter.onnx",
+            "reward": 0.9209294664232355,
+            "creation_time": 1786196896.7718728,
+            "auxillary_file_paths": [
+                "results\\run_08-curriculum\\Shooter\\Shooter-2348516.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

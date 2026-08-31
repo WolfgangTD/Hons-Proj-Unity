@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1786254644",
+        "python_version": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:36:49) [MSC v.1944 64 bit (AMD64)]",
+        "command_line_arguments": "E:\\Anaconda3\\envs\\mlagents\\Scripts\\mlagents-learn Config\\shooter.yaml --force --run-id=run_10-finalRun-multiCheatsAdded",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.2.2+cu121",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1786254707"
+    },
+    "total": 62.632340700001805,
+    "count": 1,
+    "self": 0.03155709999555256,
+    "children": {
+        "run_training.setup": {
+            "total": 0.17690330000186805,
+            "count": 1,
+            "self": 0.17690330000186805
+        },
+        "TrainerController.start_learning": {
+            "total": 62.423880300004384,
+            "count": 1,
+            "self": 0.00010900001507252455,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 62.423755099996924,
+                    "count": 1,
+                    "self": 62.423755099996924
+                },
+                "TrainerController._save_models": {
+                    "total": 1.619999238755554e-05,
+                    "count": 1,
+                    "self": 1.619999238755554e-05
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "Shooter": {
+        "elo": 1200.474278058756,
+        "checkpoints": [
+            {
+                "steps": 261453,
+                "file_path": "results\\run_05-memoryChange\\Shooter\\Shooter-261453.onnx",
+                "reward": -1.586101836628384,
+                "creation_time": 1786191285.1649957,
+                "auxillary_file_paths": [
+                    "results\\run_05-memoryChange\\Shooter\\Shooter-261453.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 261453,
+            "file_path": "results\\run_05-memoryChange\\Shooter.onnx",
+            "reward": -1.586101836628384,
+            "creation_time": 1786191285.1649957,
+            "auxillary_file_paths": [
+                "results\\run_05-memoryChange\\Shooter\\Shooter-261453.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

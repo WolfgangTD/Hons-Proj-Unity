@@ -1,0 +1,72 @@
+{
+    "block_size": {
+        "lesson_num": 4
+    },
+    "cheat_rate": {
+        "lesson_num": 3
+    },
+    "Shooter": {
+        "checkpoints": [
+            {
+                "steps": 8499992,
+                "file_path": "results\\run_09-cheats_introduced\\Shooter\\Shooter-8499992.onnx",
+                "reward": 0.7724948698054246,
+                "creation_time": 1786210608.4445357,
+                "auxillary_file_paths": [
+                    "results\\run_09-cheats_introduced\\Shooter\\Shooter-8499992.pt"
+                ]
+            },
+            {
+                "steps": 8999955,
+                "file_path": "results\\run_09-cheats_introduced\\Shooter\\Shooter-8999955.onnx",
+                "reward": 0.7176514562123861,
+                "creation_time": 1786211426.6583502,
+                "auxillary_file_paths": [
+                    "results\\run_09-cheats_introduced\\Shooter\\Shooter-8999955.pt"
+                ]
+            },
+            {
+                "steps": 9499960,
+                "file_path": "results\\run_09-cheats_introduced\\Shooter\\Shooter-9499960.onnx",
+                "reward": 0.8136766863968766,
+                "creation_time": 1786212246.3909135,
+                "auxillary_file_paths": [
+                    "results\\run_09-cheats_introduced\\Shooter\\Shooter-9499960.pt"
+                ]
+            },
+            {
+                "steps": 9999973,
+                "file_path": "results\\run_09-cheats_introduced\\Shooter\\Shooter-9999973.onnx",
+                "reward": 0.6092153206344478,
+                "creation_time": 1786213067.2160182,
+                "auxillary_file_paths": [
+                    "results\\run_09-cheats_introduced\\Shooter\\Shooter-9999973.pt"
+                ]
+            },
+            {
+                "steps": 10000031,
+                "file_path": "results\\run_09-cheats_introduced\\Shooter\\Shooter-10000031.onnx",
+                "reward": 0.6200943335157926,
+                "creation_time": 1786213067.4346228,
+                "auxillary_file_paths": [
+                    "results\\run_09-cheats_introduced\\Shooter\\Shooter-10000031.pt"
+                ]
+            }
+        ],
+        "elo": 1939.1376137877858,
+        "final_checkpoint": {
+            "steps": 10000031,
+            "file_path": "results\\run_09-cheats_introduced\\Shooter.onnx",
+            "reward": 0.6200943335157926,
+            "creation_time": 1786213067.4346228,
+            "auxillary_file_paths": [
+                "results\\run_09-cheats_introduced\\Shooter\\Shooter-10000031.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
