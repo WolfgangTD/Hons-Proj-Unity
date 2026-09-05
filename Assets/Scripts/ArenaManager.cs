@@ -48,9 +48,26 @@ public class ArenaManager : MonoBehaviour
 
     bool roundOver;
 
+    static int nextArenaId;
+    int arenaId;
+    float currentBlockSize;
+
     public float MaxDistance => arenaSize.magnitude;
 
     public int MaxEpisodeSteps => maxEpisodeSteps;
+
+    //statics survive a play session when domain reload is off, so ids would keep climbing
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void ResetArenaIds()
+    {
+        nextArenaId = 0;
+    }
+
+    void Awake()
+    {
+        // Stable within a process, so telemetry rows from cloned arenas stay separable.
+        arenaId = nextArenaId++;
+    }
 
     void Start()
     {
@@ -75,6 +92,10 @@ public class ArenaManager : MonoBehaviour
         winner.AddReward(winReward);
         loser.AddReward(loseReward);
 
+        // Before EndEpisode, which clears the cumulative reward the summary row reports.
+        winner.Telemetry?.FinishEpisode("win");
+        loser.Telemetry?.FinishEpisode("loss");
+
         agentA.EndEpisode();
         agentB.EndEpisode();
 
@@ -88,6 +109,9 @@ public class ArenaManager : MonoBehaviour
         agentA.AddReward(drawReward);
         agentB.AddReward(drawReward);
 
+        agentA.Telemetry?.FinishEpisode("draw");
+        agentB.Telemetry?.FinishEpisode("draw");
+
         //interupt instead of terminate
         agentA.EpisodeInterrupted();
         agentB.EpisodeInterrupted();
@@ -97,9 +121,12 @@ public class ArenaManager : MonoBehaviour
 
     void ApplyBlockSize()
     {
+        // Recorded even with no block assigned, so the telemetry still reports the lesson.
+        float size = Academy.Instance.EnvironmentParameters.GetWithDefault(BlockSizeParameter, defaultBlockSize);
+        currentBlockSize = size;
+
         if (centreBlock == null) return;
 
-        float size = Academy.Instance.EnvironmentParameters.GetWithDefault(BlockSizeParameter, defaultBlockSize);
         bool hasBlock = size > 0.01f;
         centreBlock.gameObject.SetActive(hasBlock);
 
@@ -161,7 +188,24 @@ public class ArenaManager : MonoBehaviour
         AssignCheats(agentA, cheatRate, multiCheat);
         AssignCheats(agentB, cheatRate, multiCheat);
 
+        BeginTelemetryEpisode();
+
         roundOver = false;
+    }
+
+    /// <summary>
+    /// Opens the capture window only once the spawn and the cheat draw are both settled,
+    /// so the episode's label row describes the episode that is about to be played.
+    /// </summary>
+    void BeginTelemetryEpisode()
+    {
+        if (!TelemetryWriter.Enabled) return;
+
+        //both agents share the id, so a round can be reassembled from either side
+        int episodeId = TelemetryWriter.NextEpisodeId();
+
+        agentA.Telemetry?.BeginEpisode(episodeId, arenaId, currentBlockSize);
+        agentB.Telemetry?.BeginEpisode(episodeId, arenaId, currentBlockSize);
     }
 
     void ResetAgent(ShooterAgent agent, Transform spawn, float axisDeg)

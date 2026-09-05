@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Weapon))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AgentTelemetry))]
 public class ShooterAgent : Agent
 {
     public const int ObservationSize = 21;
@@ -50,6 +51,9 @@ public class ShooterAgent : Agent
     PlayerMotor enemyMotor;
     Health enemyHealth;
 
+    AgentTelemetry telemetry;
+    bool telemetryResolved;
+
     float hitReward;
     float missPenalty;
 
@@ -57,6 +61,30 @@ public class ShooterAgent : Agent
     public int ShotsHit;
     public float Accuracy => ShotsFired == 0 ? 0f : (float)ShotsHit / ShotsFired;
     public Vector3 AimDirection => transform.forward;
+
+    /// <summary>
+    /// Resolved lazily rather than in Initialize, because ArenaManager.Start can run
+    /// before ML-Agents has initialised the agent.
+    /// </summary>
+    public AgentTelemetry Telemetry
+    {
+        get
+        {
+            if (telemetryResolved) return telemetry;
+
+            telemetryResolved = true;
+            telemetry = GetComponent<AgentTelemetry>();
+
+            // RequireComponent only attaches the recorder when the object is touched in the
+            // editor, so a headless build from an unsaved scene would silently capture
+            // nothing. Attaching it here means a capture run never depends on that.
+            if (telemetry == null && TelemetryWriter.Enabled)
+                telemetry = gameObject.AddComponent<AgentTelemetry>();
+
+            return telemetry;
+        }
+    }
+
     public override void Initialize()
     {
         motor = GetComponent<PlayerMotor>();
@@ -102,6 +130,10 @@ public class ShooterAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        // Runs once per decision, so it is what tells the recorder this tick is a decision
+        // rather than one of the repeats in between.
+        Telemetry?.NoteDecision();
+
         //Self
         Vector2 normPos = arena.NormalisedPosition(transform.position);
         sensor.AddObservation(normPos.x);
@@ -124,6 +156,9 @@ public class ShooterAgent : Agent
         //Enemy
         //Everything below is expressed in this agents local frame, per decision
         bool canSee = hasLos || (wallhack > 0f && Random.value < wallhack);
+
+        // A reveal is the cheat actually firing: vision the agent had no honest claim to.
+        if (canSee && !hasLos) Telemetry?.NoteWallhackReveal();
 
         Vector3 distToEnemy = enemy.transform.position - transform.position;
         Vector3 localdistToEnemy = transform.InverseTransformDirection(distToEnemy);
@@ -156,6 +191,10 @@ public class ShooterAgent : Agent
         float moveX = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
         float moveZ = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f);
 
+        // Sampled before the shot, so the row says whether the weapon was off cooldown at
+        // the moment of the decision rather than immediately after it fired.
+        float weaponReady = weapon.ReadyFraction;
+
         int turnIndex = Mathf.Clamp(actions.DiscreteActions[0], 0, turnAnglesDeg.Length - 1);
         float turnDegrees = turnAnglesDeg[turnIndex];
 
@@ -166,11 +205,21 @@ public class ShooterAgent : Agent
         motor.Move(moveX, moveZ);
         motor.RotateBy(turnDegrees);
 
-        if (!shoot && triggerBot > 0f) shoot = TriggerBotWantsToFire();
+        if (!shoot && triggerBot > 0f)
+        {
+            shoot = TriggerBotWantsToFire();
+            if (shoot) Telemetry?.NoteTriggerBotShot();
+        }
 
-        if (!shoot) return;
+        ShotResult result = ShotResult.NotReady;
+        Health target = null;
 
-        ShotResult result = weapon.TryFire(out Health target);
+        if (shoot) result = weapon.TryFire(out target);
+
+        // Recorded before the damage lands. TakeDamage can end the round, which resets the
+        // arena and starts the next episode, and this row belongs to the current one.
+        Telemetry?.RecordDecision(turnDegrees, weaponReady, shoot, result);
+
         switch (result)
         {
             case ShotResult.Hit:
@@ -208,7 +257,12 @@ public class ShooterAgent : Agent
 
         float idealDegrees = Vector3.SignedAngle(transform.forward, distToEnemy, Vector3.up);
 
-        return turnAnglesDeg[NearestTurnIndex(Mathf.Lerp(policyDegs, idealDegrees, aimSnap))];
+        float snapped = turnAnglesDeg[NearestTurnIndex(Mathf.Lerp(policyDegs, idealDegrees, aimSnap))];
+
+        // The snap only counts when it landed on a different bucket than the policy chose.
+        if (!Mathf.Approximately(snapped, policyDegs)) Telemetry?.NoteAimSnapAdjustment();
+
+        return snapped;
     }
 
     bool TriggerBotWantsToFire()
