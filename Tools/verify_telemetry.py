@@ -153,7 +153,8 @@ def describe(label, series, unit=""):
 def check_signal(steps, episodes):
     head("SIGNAL")
 
-    labels = episodes[KEY + ["label_type", "label_cheating"]]
+    labels = episodes[KEY + ["label_type", "label_cheating",
+                             "label_wallhack", "label_aim_snap", "label_trigger_bot"]]
     df = steps.merge(labels, on=KEY, how="inner")
 
     if df.empty:
@@ -179,27 +180,21 @@ def check_signal(steps, episodes):
     # Trigger-bot: fires the instant a target enters the cone, so dwell time collapses.
     print("\ntrigger-bot  -> cone_dwell_s on rows where a shot was taken on target")
     fired = df[(df["shot"] == 1) & (df["target_in_cone"] == 1)]
-    describe("honest", fired.loc[fired["label_type"] == "none", "cone_dwell_s"], "s")
-    for name in ("triggerbot", "multi"):
-        if name in present:
-            describe(name, fired.loc[fired["label_type"] == name, "cone_dwell_s"], "s")
+    describe("no trigger-bot", fired.loc[fired["label_trigger_bot"] == 0, "cone_dwell_s"], "s")
+    describe("trigger-bot",    fired.loc[fired["label_trigger_bot"] > 0, "cone_dwell_s"], "s")
 
     # Aim-snap: closes the angle to the target in a single decision.
     print("\naim-snap     -> |aim_error_deg| with line of sight")
     los = df[df["has_los"] == 1]
-    describe("honest", los.loc[los["label_type"] == "none", "aim_error_deg"].abs(), "deg")
-    for name in ("aimsnap", "multi"):
-        if name in present:
-            describe(name, los.loc[los["label_type"] == name, "aim_error_deg"].abs(), "deg")
+    describe("no aim-snap", los.loc[los["label_aim_snap"] == 0, "aim_error_deg"].abs(), "deg")
+    describe("aim-snap",    los.loc[los["label_aim_snap"] > 0, "aim_error_deg"].abs(), "deg")
 
     # Wallhack: tracks a target it has no honest way of seeing.
     print("\nwallhack     -> |aim_error_deg| with NO line of sight")
     blind = df[df["has_los"] == 0]
-    describe("honest", blind.loc[blind["label_type"] == "none", "aim_error_deg"].abs(), "deg")
-    for name in ("wallhack", "multi"):
-        if name in present:
-            describe(name, blind.loc[blind["label_type"] == name, "aim_error_deg"].abs(), "deg")
-
+    describe("no wallhack", blind.loc[blind["label_wallhack"] == 0, "aim_error_deg"].abs(), "deg")
+    describe("wallhack",    blind.loc[blind["label_wallhack"] > 0, "aim_error_deg"].abs(), "deg")
+    
     print("\nepisode outcomes by label:")
     summary = episodes.groupby("label_type").agg(
         episodes=("episode_id", "count"),
@@ -215,10 +210,10 @@ def check_signal(steps, episodes):
     if not cheats.empty:
         print("\nground-truth cheat activations (episodes where the cheat never fired "
               "are unlearnable):")
-        for col, kind in (("gt_wallhack_reveals", "wallhack"),
-                          ("gt_aimsnap_adjustments", "aimsnap"),
-                          ("gt_triggerbot_shots", "triggerbot")):
-            sub = cheats[cheats["label_type"].isin([kind, "multi"])]
+        for col, sev, kind in (("gt_wallhack_reveals", "label_wallhack", "wallhack"),
+                               ("gt_aimsnap_adjustments", "label_aim_snap", "aimsnap"),
+                               ("gt_triggerbot_shots", "label_trigger_bot", "triggerbot")):
+            sub = cheats[cheats[sev] > 0]
             if sub.empty:
                 continue
             dead = (sub[col] == 0).mean()

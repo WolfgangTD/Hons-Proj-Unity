@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &17826676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 1267113637}
-  agentB: {fileID: 1859998339}
+  agentA: {fileID: 1267113650}
+  agentB: {fileID: 1859998352}
   spawnA: {fileID: 876981243}
   spawnB: {fileID: 579217165}
   randomiseSpawns: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   centreBlock: {fileID: 1279711752}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -727,6 +727,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -847,6 +855,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1778084772}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 478724430}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1387,7 +1403,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -1399,31 +1416,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 59320911}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 59320910}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320909}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320908}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320907}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320906}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320905}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320903}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59320913}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 59320904}
@@ -1443,44 +1436,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 59320899}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &59320903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1778084772}
-  enemy: {fileID: 478724417}
-  aimPoint: {fileID: 1396943492}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &59320904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,100 +1452,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &59320905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &59320906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &59320907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &59320908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &59320909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &59320910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1618,59 +1479,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &59320911
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59320902}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &59320913
+--- !u!114 &59320916 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 59320899}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59320902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &76972620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2359,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1043236985}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1125385412}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2972,6 +2799,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -3204,7 +3039,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -3213,31 +3049,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 294173201}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 294173200}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173199}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173198}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173197}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173196}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173195}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173193}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 294173203}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 294173194}
@@ -3257,44 +3069,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 294173189}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &294173193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1043236985}
-  enemy: {fileID: 1125385399}
-  aimPoint: {fileID: 1847718358}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &294173194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3311,100 +3085,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &294173195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &294173196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &294173197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &294173198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &294173199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &294173200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3432,59 +3112,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &294173201
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294173192}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &294173203
+--- !u!114 &294173206 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 294173189}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294173192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &327324678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3689,6 +3327,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1128222009}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1075048308}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -4121,6 +3767,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -4353,7 +4007,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -4362,31 +4017,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 363353003}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 363353002}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363353001}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363353000}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363352999}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363352998}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363352997}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363352995}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363353005}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 363352996}
@@ -4406,44 +4037,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 363352991}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &363352995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1128222009}
-  enemy: {fileID: 1075048295}
-  aimPoint: {fileID: 2029134438}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &363352996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4460,100 +4053,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &363352997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &363352998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &363352999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &363353000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &363353001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &363353002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4581,59 +4080,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &363353003
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363352994}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &363353005
+--- !u!114 &363353008 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 363352991}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363352994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &381776054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5237,6 +4694,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1778084772}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 59320916}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5669,6 +5134,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5901,7 +5374,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -5910,31 +5384,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 478724425}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 478724424}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724423}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724422}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724421}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724420}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724419}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724417}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478724427}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 478724418}
@@ -5954,44 +5404,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 478724413}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &478724417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1778084772}
-  enemy: {fileID: 59320903}
-  aimPoint: {fileID: 595496986}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &478724418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6008,100 +5420,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &478724419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &478724420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &478724421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &478724422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &478724423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &478724424
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6129,59 +5447,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &478724425
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478724416}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &478724427
+--- !u!114 &478724430 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 478724413}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478724416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &481325888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6531,7 +5807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &512840491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6544,8 +5820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 2026648843}
-  agentB: {fileID: 751569398}
+  agentA: {fileID: 2026648856}
+  agentB: {fileID: 751569411}
   spawnA: {fileID: 1056348848}
   spawnB: {fileID: 663480149}
   randomiseSpawns: 1
@@ -6556,7 +5832,7 @@ MonoBehaviour:
   centreBlock: {fileID: 1278596339}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -8250,7 +7526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &717701101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8263,8 +7539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 1127560937}
-  agentB: {fileID: 1822531641}
+  agentA: {fileID: 1127560950}
+  agentB: {fileID: 1822531654}
   spawnA: {fileID: 1005168437}
   spawnB: {fileID: 1155877536}
   randomiseSpawns: 1
@@ -8275,7 +7551,7 @@ MonoBehaviour:
   centreBlock: {fileID: 1922358193}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -8700,6 +7976,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -8820,6 +8104,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1148631332}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1597865926}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -9360,7 +8652,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -9372,31 +8665,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 739068954}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 739068953}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068952}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068951}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068950}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068949}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068948}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068946}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739068956}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 739068947}
@@ -9416,44 +8685,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 739068942}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &739068946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1148631332}
-  enemy: {fileID: 1597865913}
-  aimPoint: {fileID: 1003120670}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &739068947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9470,100 +8701,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &739068948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &739068949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &739068950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &739068951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &739068952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &739068953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9591,59 +8728,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &739068954
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739068945}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &739068956
+--- !u!114 &739068959 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 739068942}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739068945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1001 &751569394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9924,6 +9019,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -10044,6 +9147,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 512840491}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 2026648856}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -10584,7 +9695,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -10596,31 +9708,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 751569406}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 751569405}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569404}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569403}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569402}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569401}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569400}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569398}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 751569408}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 751569399}
@@ -10640,44 +9728,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 751569394}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &751569398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 512840491}
-  enemy: {fileID: 2026648843}
-  aimPoint: {fileID: 1725996315}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &751569399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10694,100 +9744,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &751569400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &751569401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &751569402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &751569403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &751569404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &751569405
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10815,59 +9771,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &751569406
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751569397}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &751569408
+--- !u!114 &751569411 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 751569394}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751569397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &776366364
 GameObject:
   m_ObjectHideFlags: 0
@@ -14307,7 +13221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1043236985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14320,8 +13234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 294173193}
-  agentB: {fileID: 1125385399}
+  agentA: {fileID: 294173206}
+  agentB: {fileID: 1125385412}
   spawnA: {fileID: 2100027869}
   spawnB: {fileID: 1092357242}
   randomiseSpawns: 1
@@ -14332,7 +13246,7 @@ MonoBehaviour:
   centreBlock: {fileID: 866368908}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -14676,6 +13590,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -14796,6 +13718,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1128222009}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 363353008}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -15336,7 +14266,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -15348,31 +14279,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1075048303}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1075048302}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048301}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048300}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048299}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048298}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048297}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048295}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1075048305}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1075048296}
@@ -15392,44 +14299,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 1075048291}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1075048295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1128222009}
-  enemy: {fileID: 363352995}
-  aimPoint: {fileID: 1325712174}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1075048296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15446,100 +14315,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1075048297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1075048298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1075048299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1075048300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1075048301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1075048302
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15567,59 +14342,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1075048303
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075048294}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &1075048305
+--- !u!114 &1075048308 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 1075048291}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075048294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1076868687
 GameObject:
   m_ObjectHideFlags: 0
@@ -16330,6 +15063,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -16450,6 +15191,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1043236985}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 294173206}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -16990,7 +15739,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -17002,31 +15752,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1125385407}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1125385406}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385405}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385404}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385403}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385402}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385401}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385399}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125385409}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1125385400}
@@ -17046,44 +15772,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 1125385395}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1125385399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1043236985}
-  enemy: {fileID: 294173193}
-  aimPoint: {fileID: 1342133144}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1125385400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17100,100 +15788,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1125385401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1125385402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1125385403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1125385404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1125385405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1125385406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17221,59 +15815,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1125385407
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125385398}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &1125385409
+--- !u!114 &1125385412 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 1125385395}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125385398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1001 &1127560933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17382,6 +15934,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 717701101}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1822531654}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -17814,6 +16374,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -18046,7 +16614,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -18055,31 +16624,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1127560945}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1127560944}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560943}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560942}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560941}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560940}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560939}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560937}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1127560947}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1127560938}
@@ -18099,44 +16644,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 1127560933}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1127560937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 717701101}
-  enemy: {fileID: 1822531641}
-  aimPoint: {fileID: 2076016883}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1127560938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18153,100 +16660,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1127560939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1127560940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1127560941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1127560942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1127560943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1127560944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18274,59 +16687,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1127560945
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127560936}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &1127560947
+--- !u!114 &1127560950 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 1127560933}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127560936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1128222008
 GameObject:
   m_ObjectHideFlags: 0
@@ -18343,7 +16714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1128222009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18356,8 +16727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 363352995}
-  agentB: {fileID: 1075048295}
+  agentA: {fileID: 363353008}
+  agentB: {fileID: 1075048308}
   spawnA: {fileID: 76972621}
   spawnB: {fileID: 1590501762}
   randomiseSpawns: 1
@@ -18368,7 +16739,7 @@ MonoBehaviour:
   centreBlock: {fileID: 1167969706}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -18529,7 +16900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1148631332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18542,8 +16913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 1597865913}
-  agentB: {fileID: 739068946}
+  agentA: {fileID: 1597865926}
+  agentB: {fileID: 739068959}
   spawnA: {fileID: 1217938849}
   spawnB: {fileID: 2087472464}
   randomiseSpawns: 1
@@ -18554,7 +16925,7 @@ MonoBehaviour:
   centreBlock: {fileID: 959162750}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -18745,7 +17116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1213477340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18758,8 +17129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 1576808172}
-  agentB: {fileID: 1956372938}
+  agentA: {fileID: 1576808185}
+  agentB: {fileID: 1956372951}
   spawnA: {fileID: 1902627188}
   spawnB: {fileID: 197573690}
   randomiseSpawns: 1
@@ -18770,7 +17141,7 @@ MonoBehaviour:
   centreBlock: {fileID: 994867893}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -19047,6 +17418,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 17826676}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1859998352}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -19479,6 +17858,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -19711,7 +18098,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -19720,31 +18108,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1267113645}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1267113644}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113643}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113642}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113641}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113640}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113639}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113637}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267113647}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1267113638}
@@ -19764,44 +18128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 1267113633}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1267113637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 17826676}
-  enemy: {fileID: 1859998339}
-  aimPoint: {fileID: 1836901557}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1267113638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19818,100 +18144,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1267113639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1267113640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1267113641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1267113642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1267113643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1267113644
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19939,59 +18171,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1267113645
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267113636}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &1267113647
+--- !u!114 &1267113650 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 1267113633}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267113636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1278596338
 GameObject:
   m_ObjectHideFlags: 0
@@ -21178,6 +19368,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1213477340}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1956372951}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -21610,6 +19808,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -21842,7 +20048,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -21851,31 +20058,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1576808180}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1576808179}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808178}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808177}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808176}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808175}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808174}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808172}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1576808182}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1576808173}
@@ -21895,44 +20078,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 1576808168}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1576808172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1213477340}
-  enemy: {fileID: 1956372938}
-  aimPoint: {fileID: 1981640126}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1576808173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21949,100 +20094,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1576808174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1576808175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1576808176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1576808177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1576808178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1576808179
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22070,59 +20121,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1576808180
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576808171}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &1576808182
+--- !u!114 &1576808185 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 1576808168}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576808171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1590501761
 GameObject:
   m_ObjectHideFlags: 0
@@ -22262,6 +20271,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1148631332}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 739068959}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -22694,6 +20711,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -22926,7 +20951,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -22935,31 +20961,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1597865921}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1597865920}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865919}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865918}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865917}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865916}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865915}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865913}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1597865923}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1597865914}
@@ -22979,44 +20981,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 1597865909}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1597865913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1148631332}
-  enemy: {fileID: 739068946}
-  aimPoint: {fileID: 626154527}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1597865914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23033,100 +20997,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1597865915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1597865916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1597865917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1597865918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1597865919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1597865920
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23154,59 +21024,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1597865921
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597865912}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &1597865923
+--- !u!114 &1597865926 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 1597865909}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597865912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1639387876
 GameObject:
   m_ObjectHideFlags: 0
@@ -23653,7 +21481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1778084772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23666,8 +21494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ee9a01abf80b4b9ef3779d01d2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaManager
-  agentA: {fileID: 478724417}
-  agentB: {fileID: 59320903}
+  agentA: {fileID: 478724430}
+  agentB: {fileID: 59320916}
   spawnA: {fileID: 246162476}
   spawnB: {fileID: 2019624336}
   randomiseSpawns: 1
@@ -23678,7 +21506,7 @@ MonoBehaviour:
   centreBlock: {fileID: 20218415}
   blockHeight: 3
   defaultBlockSize: 12
-  defaultCheatRate: 0.03
+  defaultCheatRate: 0.5
   allowMultipleCheats: 0
   aimSnapRange: {x: 0.05, y: 1}
   triggerBotRange: {x: 0.6, y: 1}
@@ -24168,6 +21996,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -24288,6 +22124,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 717701101}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1127560950}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -24828,7 +22672,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -24840,31 +22685,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1822531649}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1822531648}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531647}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531646}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531645}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531644}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531643}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531641}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1822531651}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1822531642}
@@ -24884,44 +22705,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 1822531637}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1822531641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 717701101}
-  enemy: {fileID: 1127560937}
-  aimPoint: {fileID: 358777204}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1822531642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24938,100 +22721,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1822531643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1822531644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1822531645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1822531646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1822531647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1822531648
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25059,59 +22748,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1822531649
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822531640}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &1822531651
+--- !u!114 &1822531654 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 1822531637}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822531640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1836901556
 GameObject:
   m_ObjectHideFlags: 0
@@ -25454,6 +23101,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -25574,6 +23229,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 17826676}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1267113650}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -26114,7 +23777,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -26126,31 +23790,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1859998347}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1859998346}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998345}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998344}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998343}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998342}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998341}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998339}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1859998349}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1859998340}
@@ -26170,44 +23810,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 1859998335}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1859998339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 17826676}
-  enemy: {fileID: 1267113637}
-  aimPoint: {fileID: 2127626790}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1859998340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26224,100 +23826,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1859998341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1859998342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1859998343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1859998344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1859998345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1859998346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26345,59 +23853,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1859998347
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859998338}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &1859998349
+--- !u!114 &1859998352 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 1859998335}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859998338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1902627187
 GameObject:
   m_ObjectHideFlags: 0
@@ -26931,6 +24397,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: agentId
+      value: CT_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3076903677356144137, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -27051,6 +24525,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 1213477340}
+    - target: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1576808185}
     - target: {fileID: 4357542969685891867, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -27591,7 +25073,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4661547322237787432, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -27603,31 +25086,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1956372946}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1956372945}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372944}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372943}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372942}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372941}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372940}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372938}
-    - targetCorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956372948}
     - targetCorrespondingSourceObject: {fileID: 9098491976766050289, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1956372939}
@@ -27647,44 +25106,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
   m_PrefabInstance: {fileID: 1956372934}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1956372938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 1213477340}
-  enemy: {fileID: 1576808172}
-  aimPoint: {fileID: 1216624609}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &1956372939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27701,100 +25122,6 @@ MonoBehaviour:
   - CTHead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &1956372940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &1956372941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 1
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &1956372942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &1956372943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &1956372944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &1956372945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27822,59 +25149,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &1956372946
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956372937}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17649746
-  m_Height: 2.0601676
-  m_Direction: 1
-  m_Center: {x: 0.018473625, y: 0.9894744, z: 0.0028674006}
---- !u!114 &1956372948
+--- !u!114 &1956372951 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4264866207576980206, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+  m_PrefabInstance: {fileID: 1956372934}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956372937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &1981640125
 GameObject:
   m_ObjectHideFlags: 0
@@ -28460,6 +25745,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 512840491}
+    - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 751569411}
     - target: {fileID: 935712903742324501, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -28892,6 +26185,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: agentId
+      value: T_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: logEveryPhysicsTick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342425445766684619, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -29124,7 +26425,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2756169457907300627, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
@@ -29133,31 +26435,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2026648851}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2026648850}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648849}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648848}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648847}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648846}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648845}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648843}
-    - targetCorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2026648853}
     - targetCorrespondingSourceObject: {fileID: 706410263094078608, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2026648844}
@@ -29177,44 +26455,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1942027958787952265, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
   m_PrefabInstance: {fileID: 2026648839}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2026648843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  arena: {fileID: 512840491}
-  enemy: {fileID: 751569398}
-  aimPoint: {fileID: 514422742}
-  turnAnglesDeg:
-  - -18
-  - -6
-  - -2
-  - 0
-  - 2
-  - 6
-  - 18
-  hitRewardMax: 1
-  missPenaltyMax: 1
-  manualCheatOverride: 0
-  wallhack: 0
-  aimSnap: 0
-  triggerBot: 0
-  aimLineLength: 50
-  drawAimGizmo: 1
-  drawCheatIndicator: 1
-  ShotsFired: 0
-  ShotsHit: 0
 --- !u!114 &2026648844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29231,100 +26471,6 @@ MonoBehaviour:
   - THead
   useAutoLabeling: 0
   autoLabelingSchemeType: 
---- !u!114 &2026648845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 5
-  DecisionStep: 0
-  TakeActionsBetweenDecisions: 1
---- !u!114 &2026648846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
-  m_BrainParameters:
-    VectorObservationSize: 21
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 0700000002000000
-    VectorActionSize: 
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Shooter
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &2026648847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d4188636555984bba47de3df68322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 20
-  range: 50
-  cooldown: 0.2
-  coneHalfAngle: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &2026648848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9087557a4b71d458484faa6eeb1a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  moveSpeed: 5
---- !u!114 &2026648849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e229abdf29f17b42bbf9f008dc29a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
 --- !u!54 &2026648850
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29352,59 +26498,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &2026648851
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026648842}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.22880763
-  m_Height: 2.0943587
-  m_Direction: 1
-  m_Center: {x: 0.045732506, y: 0.98638046, z: 0.0018619299}
---- !u!114 &2026648853
+--- !u!114 &2026648856 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+  m_PrefabInstance: {fileID: 2026648839}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026648842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee761172f717ec4a8548167e94c785e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Sensors.RayPerceptionSensorComponent3D
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Agent
-  - Wall
-  m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
-  m_SphereCastRadius: 0.5
-  m_RayLength: 50
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967240
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 1.6
-  m_EndVerticalOffset: 1.6
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAgent
 --- !u!1 &2029134437
 GameObject:
   m_ObjectHideFlags: 0
@@ -29964,6 +27068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1265883725}
     m_Modifications:
+    - target: {fileID: 162974548956416736, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
+      propertyPath: m_SensorName
+      value: RayPerceptionSensor81
+      objectReference: {fileID: 0}
     - target: {fileID: 896161377459833587, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: arena
       value: 
@@ -30018,13 +27126,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: agentId
-      value: 2
+      value: T_0
       objectReference: {fileID: 0}
     - target: {fileID: 6275819469169706558, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
       propertyPath: logEveryPhysicsTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7380053691541534585, guid: a93574c96e1fd1b43ab7ed1dc5d8544c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -30055,6 +27164,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
       propertyPath: agentId
+      value: CT_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045132605426193940, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: logEveryPhysicsTick
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3948006867873017743, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
@@ -30109,7 +27222,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4867639592724072621, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
+      propertyPath: m_SensorName
+      value: RayPerceptionSensor82
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1341861902119315009, guid: c9a085cd6d13ef44d92a42e8aa9a7434, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
