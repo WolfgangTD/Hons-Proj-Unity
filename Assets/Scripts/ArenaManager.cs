@@ -1,3 +1,4 @@
+using System.Globalization;
 using Unity.MLAgents;
 using UnityEngine;
 public class ArenaManager : MonoBehaviour
@@ -55,6 +56,14 @@ public class ArenaManager : MonoBehaviour
     public float MaxDistance => arenaSize.magnitude;
 
     public int MaxEpisodeSteps => maxEpisodeSteps;
+
+    public int ArenaId => arenaId;
+
+    // Resolved in one place so the draw and meta.json cannot disagree: the trainer's
+    // curriculum when one is attached, the inspector fields otherwise.
+    float CheatRate => Academy.Instance.EnvironmentParameters.GetWithDefault(CheatRateParameter, defaultCheatRate);
+    bool MultiCheat => Academy.Instance.EnvironmentParameters.GetWithDefault(MultiCheatParameter, allowMultipleCheats ? 1f : 0f) > 0.5f;
+    float BlockSize => Academy.Instance.EnvironmentParameters.GetWithDefault(BlockSizeParameter, defaultBlockSize);
 
     //statics survive a play session when domain reload is off, so ids would keep climbing
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -122,7 +131,7 @@ public class ArenaManager : MonoBehaviour
     void ApplyBlockSize()
     {
         // Recorded even with no block assigned, so the telemetry still reports the lesson.
-        float size = Academy.Instance.EnvironmentParameters.GetWithDefault(BlockSizeParameter, defaultBlockSize);
+        float size = BlockSize;
         currentBlockSize = size;
 
         if (centreBlock == null) return;
@@ -166,20 +175,47 @@ public class ArenaManager : MonoBehaviour
 
     static float RandomIn(Vector2 range)
     {
+        Vector2 bounds = SeverityBounds(range);
+
+        return Random.Range(bounds.x, bounds.y);
+    }
+
+    /// <summary>The range RandomIn actually samples: ordered, and clamped into [0.01, 1].</summary>
+    static Vector2 SeverityBounds(Vector2 range)
+    {
         float min = Mathf.Clamp(Mathf.Min(range.x, range.y), 0.01f, 1f);
         float max = Mathf.Clamp(Mathf.Max(range.x, range.y), 0.01f, 1f);
 
-        return Random.Range(min, max);
+        return new Vector2(min, max);
     }
+
+    /// <summary>
+    /// This arena's effective cheat settings as JSON fields, for meta.json. Ids are left
+    /// out so that two arenas with the same settings produce the same string.
+    /// </summary>
+    public string CheatConfigJson()
+    {
+        Vector2 aimSnap = SeverityBounds(aimSnapRange);
+        Vector2 triggerBot = SeverityBounds(triggerBotRange);
+
+        return
+            $"\"cheat_rate\": {Num(CheatRate)}, " +
+            $"\"multi_cheat\": {(MultiCheat ? "true" : "false")}, " +
+            $"\"aim_snap_range\": [{Num(aimSnap.x)}, {Num(aimSnap.y)}], " +
+            $"\"trigger_bot_range\": [{Num(triggerBot.x)}, {Num(triggerBot.y)}], " +
+            $"\"wallhack_severity\": {Num(WallhackSeverity)}, " +
+            $"\"block_size\": {Num(BlockSize)}, " +
+            $"\"max_episode_steps\": {maxEpisodeSteps.ToString(CultureInfo.InvariantCulture)}";
+    }
+
+    static string Num(float value) => value.ToString("R", CultureInfo.InvariantCulture);
 
     void ResetArena()
     {
         ApplyBlockSize();
 
-        var envParams = Academy.Instance.EnvironmentParameters;
-
-        float cheatRate = envParams.GetWithDefault(CheatRateParameter, defaultCheatRate);
-        bool multiCheat = envParams.GetWithDefault(MultiCheatParameter, allowMultipleCheats ? 1f : 0f) > 0.5f;
+        float cheatRate = CheatRate;
+        bool multiCheat = MultiCheat;
         float axisDeg = randomiseSpawns ? Random.Range(0f, 360f) : 0f;
 
         ResetAgent(agentA, spawnA, axisDeg);

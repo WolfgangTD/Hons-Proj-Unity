@@ -193,9 +193,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -5833,9 +5833,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -7552,9 +7552,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -13247,9 +13247,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -16740,9 +16740,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -16926,9 +16926,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -17142,9 +17142,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -17304,7 +17304,7 @@ MonoBehaviour:
   defaultCheatRate: 0.5
   allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1
@@ -21507,9 +21507,9 @@ MonoBehaviour:
   blockHeight: 3
   defaultBlockSize: 12
   defaultCheatRate: 0.5
-  allowMultipleCheats: 0
+  allowMultipleCheats: 1
   aimSnapRange: {x: 0.05, y: 1}
-  triggerBotRange: {x: 0.6, y: 1}
+  triggerBotRange: {x: 0.2, y: 1}
   arenaSize: {x: 50, y: 50}
   maxEpisodeSteps: 3000
   winReward: 1

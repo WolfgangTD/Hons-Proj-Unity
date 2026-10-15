@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using Unity.MLAgents;
 using UnityEngine;
 
 /// <summary>
@@ -200,19 +202,87 @@ public static class TelemetryWriter
         }
     }
 
+    /// <summary>
+    /// The cheat settings are inspector fields toggled between runs, and the curriculum
+    /// falls back to them silently when no trainer is attached, so a session that does not
+    /// record them cannot say what produced it. Written per arena because nothing forces
+    /// the arenas to agree. A snapshot at open: with a trainer attached, the curriculum can
+    /// still move these mid-session, which trainer_connected flags.
+    /// </summary>
     static void WriteMeta()
     {
-        string meta =
-            "{\n" +
-            $"  \"session\": \"{SessionId}\",\n" +
-            $"  \"started_utc\": \"{DateTime.UtcNow:o}\",\n" +
-            $"  \"unity_version\": \"{Application.unityVersion}\",\n" +
-            $"  \"fixed_delta_time\": {Time.fixedDeltaTime.ToString("R", CultureInfo.InvariantCulture)},\n" +
-            $"  \"time_scale\": {Time.timeScale.ToString("R", CultureInfo.InvariantCulture)}\n" +
-            "}\n";
+        // Every ArenaManager has run Awake by now: the first open comes from an arena's Start.
+        ArenaManager[] arenas = UnityEngine.Object.FindObjectsByType<ArenaManager>(FindObjectsSortMode.None);
+        Array.Sort(arenas, (a, b) => a.ArenaId.CompareTo(b.ArenaId));
 
-        File.WriteAllText(Path.Combine(SessionDirectory, "meta.json"), meta);
+        var configs = new string[arenas.Length];
+        var counts = new Dictionary<string, int>();
+        string common = null;
+
+        for (int i = 0; i < arenas.Length; i++)
+        {
+            configs[i] = arenas[i].CheatConfigJson();
+            counts.TryGetValue(configs[i], out int n);
+            counts[configs[i]] = ++n;
+
+            if (common == null || n > counts[common]) common = configs[i];
+        }
+
+        bool consistent = counts.Count <= 1;
+
+        var meta = new StringBuilder();
+        meta.Append("{\n");
+        meta.Append($"  \"session\": \"{SessionId}\",\n");
+        meta.Append($"  \"started_utc\": \"{DateTime.UtcNow:o}\",\n");
+        meta.Append($"  \"unity_version\": \"{Application.unityVersion}\",\n");
+        meta.Append($"  \"fixed_delta_time\": {Time.fixedDeltaTime.ToString("R", CultureInfo.InvariantCulture)},\n");
+        meta.Append($"  \"time_scale\": {Time.timeScale.ToString("R", CultureInfo.InvariantCulture)},\n");
+        meta.Append($"  \"trainer_connected\": {Bool(Academy.Instance.IsCommunicatorOn)},\n");
+        meta.Append($"  \"cheat_config_consistent\": {Bool(consistent)},\n");
+        meta.Append("  \"arenas\": [");
+
+        for (int i = 0; i < arenas.Length; i++)
+        {
+            ArenaManager arena = arenas[i];
+
+            meta.Append(i == 0 ? "\n" : ",\n");
+            meta.Append($"    {{\"arena_id\": {arena.ArenaId.ToString(CultureInfo.InvariantCulture)}, ");
+            meta.Append($"\"object\": {Quote(arena.name)}, ");
+            meta.Append($"\"agents\": [{Quote(AgentName(arena.agentA))}, {Quote(AgentName(arena.agentB))}], ");
+            meta.Append(configs[i]);
+            meta.Append('}');
+        }
+
+        meta.Append(arenas.Length == 0 ? "]\n" : "\n  ]\n");
+        meta.Append("}\n");
+
+        File.WriteAllText(Path.Combine(SessionDirectory, "meta.json"), meta.ToString());
+
+        if (consistent) return;
+
+        // A capture where one arena draws differently is confounded by arena, and the
+        // per-episode labels cannot show it. Name the odd ones out so they can be fixed.
+        var odd = new StringBuilder();
+        for (int i = 0; i < arenas.Length; i++)
+        {
+            if (configs[i] != common)
+                odd.Append($"\n  arena {arenas[i].ArenaId} ({arenas[i].name}): {configs[i]}");
+        }
+
+        Debug.LogWarning($"Arenas disagree on cheat settings, so this capture is confounded by arena. Most use:\n  {common}\nThese differ:{odd}");
     }
+
+    static string AgentName(ShooterAgent agent)
+    {
+        if (agent == null) return "";
+
+        AgentTelemetry recorder = agent.Telemetry;
+        return recorder != null ? recorder.agentId : agent.name;
+    }
+
+    static string Bool(bool value) => value ? "true" : "false";
+
+    static string Quote(string value) => "\"" + value.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\"";
 
     public static void Close()
     {
