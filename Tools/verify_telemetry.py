@@ -27,6 +27,14 @@ LABEL_MARKERS = ("label_", "gt_", "wallhack", "aim_snap", "aimsnap", "trigger_bo
 
 STEP_COLUMNS = 30
 EPISODE_COLUMNS = 25
+ACTIVATION_COLUMNS = 8
+
+# activations.csv cheat name -> the episodes.csv counter it must reconcile against
+GT_COUNTER = {
+    "wallhack": "gt_wallhack_reveals",
+    "aimsnap": "gt_aimsnap_adjustments",
+    "triggerbot": "gt_triggerbot_shots",
+}
 
 
 def find_session(argv):
@@ -119,8 +127,11 @@ def check_structure(session):
     print(f"\nepisodes      {len(episodes):>9,} labelled")
     print(f"orphan steps  {orphans:>9,}  ({orphan_eps} unfinished episodes)")
 
-    if orphans and orphan_eps > 2:
-        print("  WARN more than the run's final episodes are unlabelled")
+    # One round per arena is still in flight when the capture stops, so that many
+    # unfinished episodes is expected rather than a fault.
+    n_arenas = steps["arena_id"].nunique()
+    if orphan_eps > n_arenas:
+        print(f"  WARN {orphan_eps} unfinished episodes for {n_arenas} arenas - expected at most one each")
 
     print(f"arenas        {sorted(steps['arena_id'].unique().tolist())}")
     print(f"agents        {sorted(steps['agent_id'].unique().tolist())}")
@@ -223,17 +234,91 @@ def check_signal(steps, episodes):
     return True
 
 
+def check_activations(session, steps, episodes):
+    """The sidecar is only useful if it lines up with the two files it annotates.
+
+    Two things are checked, and the second is the one that proves it: every activation
+    must sit on a decision that exists in steps.csv, and the per-episode activation
+    counts must reconcile exactly with the gt_* counters, which are incremented by the
+    same code path but written independently.
+    """
+    path = session / "activations.csv"
+    if not path.is_file():
+        head("ACTIVATIONS")
+        print("  no activations.csv - capture predates the sidecar, or logActivations is off")
+        return True
+
+    head("ACTIVATIONS")
+    acts = pd.read_csv(path)
+    ok = True
+
+    print(f"activations.csv {len(acts):>9,} rows x {len(acts.columns)} cols")
+
+    if len(acts.columns) != ACTIVATION_COLUMNS:
+        print(f"  FAIL expected {ACTIVATION_COLUMNS} columns")
+        ok = False
+
+    if (acts["session"] == "session").any():
+        print("  FAIL header line repeated inside the data")
+        ok = False
+
+    unknown = set(acts["cheat"].unique()) - set(GT_COUNTER)
+    if unknown:
+        print(f"  FAIL unknown cheat names: {sorted(unknown)}")
+        ok = False
+
+    print(f"by cheat        {acts['cheat'].value_counts().to_dict()}")
+
+    # Every activation must land on a tick that actually produced a step row.
+    step_keys = steps[KEY + ["decision"]].drop_duplicates()
+    joined = acts.merge(step_keys, on=KEY + ["decision"], how="left", indicator=True)
+    orphans = int((joined["_merge"] == "left_only").sum())
+    print(f"orphan rows     {orphans:>9,}  (activations with no matching step)")
+    if orphans:
+        print("  FAIL decision indices do not align with steps.csv")
+        ok = False
+
+    # The reconciliation. Counted per episode per cheat, against the independent counter.
+    counts = acts.groupby(KEY + ["cheat"]).size().unstack("cheat", fill_value=0)
+    mismatches = []
+    for cheat, col in GT_COUNTER.items():
+        if col not in episodes.columns:
+            continue
+        got = counts[cheat] if cheat in counts.columns else None
+        merged = episodes.set_index(KEY)[[col]].copy()
+        merged["rows"] = got if got is not None else 0
+        merged["rows"] = merged["rows"].fillna(0).astype(int)
+        bad = merged[merged[col] != merged["rows"]]
+        if not bad.empty:
+            mismatches.append((cheat, len(bad), bad.head(3).to_dict("index")))
+
+    if mismatches:
+        for cheat, n, sample in mismatches:
+            print(f"  FAIL {cheat}: {n} episodes where row count != counter; e.g. {sample}")
+        ok = False
+    else:
+        print("counts reconcile with gt_* counters  OK")
+
+    if "cheat" in acts.columns and not acts.empty:
+        per_ep = acts.groupby(KEY).size()
+        print(f"rows per episode median {per_ep.median():.0f}  max {per_ep.max()}")
+
+    return ok
+
+
 def main():
     session = find_session(sys.argv)
     steps, episodes, structure_ok = check_structure(session)
     hygiene_ok = check_hygiene(steps)
+    activations_ok = check_activations(session, steps, episodes)
     signal_ok = check_signal(steps, episodes)
 
     head("VERDICT")
-    for name, ok in (("structure", structure_ok), ("hygiene", hygiene_ok), ("signal", signal_ok)):
+    for name, ok in (("structure", structure_ok), ("hygiene", hygiene_ok),
+                     ("activations", activations_ok), ("signal", signal_ok)):
         print(f"  {name:<12} {'ok' if ok else 'CHECK ABOVE'}")
 
-    return 0 if (structure_ok and hygiene_ok) else 1
+    return 0 if (structure_ok and hygiene_ok and activations_ok) else 1
 
 
 if __name__ == "__main__":

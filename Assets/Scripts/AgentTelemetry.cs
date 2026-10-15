@@ -29,7 +29,14 @@ public class AgentTelemetry : MonoBehaviour
         "label_cheating,label_type,label_wallhack,label_aim_snap,label_trigger_bot," +
         "gt_wallhack_reveals,gt_aimsnap_adjustments,gt_triggerbot_shots";
 
+    const string ActivationHeader =
+        "session,episode_id,arena_id,agent_id,decision,t_s,cheat,severity";
+
     static readonly StringBuilder Row = new StringBuilder(512);
+
+    // Its own builder: an activation is recorded from CollectObservations and from
+    // OnActionReceived, either side of the step row being assembled in Row.
+    static readonly StringBuilder ActRow = new StringBuilder(160);
 
     [Tooltip("Stable name for this seat in the arena. Defaults to the GameObject name.")]
     public string agentId = "";
@@ -38,6 +45,11 @@ public class AgentTelemetry : MonoBehaviour
              "Between Decisions on, that is Decision Period times as many rows (50Hz here), " +
              "and is closer to what a real server tickrate would give a detector.")]
     public bool logEveryPhysicsTick = false;
+
+    [Tooltip("Write activations.csv: one row each time a cheat actually fires, keyed on " +
+             "decision so it joins onto steps.csv. Ground truth for attribution, and it " +
+             "never enters the feature stream.")]
+    public bool logActivations = true;
 
     ShooterAgent agent;
     ArenaManager arena;
@@ -343,9 +355,50 @@ public class AgentTelemetry : MonoBehaviour
 
     // Ground-truth counters. These say how often a cheat actually changed the outcome,
     // which is not the same as how severe it was configured to be.
-    public void NoteWallhackReveal() { if (active) wallhackReveals++; }
-    public void NoteAimSnapAdjustment() { if (active) aimSnapAdjustments++; }
-    public void NoteTriggerBotShot() { if (active) triggerBotShots++; }
+    public void NoteWallhackReveal()
+    {
+        if (!active) return;
+
+        wallhackReveals++;
+        WriteActivation("wallhack", agent.wallhack);
+    }
+
+    public void NoteAimSnapAdjustment()
+    {
+        if (!active) return;
+
+        aimSnapAdjustments++;
+        WriteActivation("aimsnap", agent.aimSnap);
+    }
+
+    public void NoteTriggerBotShot()
+    {
+        if (!active) return;
+
+        triggerBotShots++;
+        WriteActivation("triggerbot", agent.triggerBot);
+    }
+
+    /// <summary>
+    /// `decision` is the index the step row for this tick is about to be written with, so
+    /// an activation lands on the same index as the behaviour it caused.
+    /// </summary>
+    void WriteActivation(string cheat, float severity)
+    {
+        if (!logActivations) return;
+
+        ActRow.Clear();
+        ActRow.Append(TelemetryWriter.SessionId).Append(',');
+        ActRow.Append(episodeId.ToString(CultureInfo.InvariantCulture)).Append(',');
+        ActRow.Append(arenaId.ToString(CultureInfo.InvariantCulture)).Append(',');
+        ActRow.Append(agentId).Append(',');
+        ActRow.Append(decision.ToString(CultureInfo.InvariantCulture)).Append(',');
+        ActRow.Append((Time.time - episodeStart).ToString("0.#####", CultureInfo.InvariantCulture)).Append(',');
+        ActRow.Append(cheat).Append(',');
+        ActRow.Append(severity.ToString("0.#####", CultureInfo.InvariantCulture));
+
+        TelemetryWriter.WriteActivation(ActivationHeader, ActRow);
+    }
 
     static void Num(float value, bool last = false)
     {

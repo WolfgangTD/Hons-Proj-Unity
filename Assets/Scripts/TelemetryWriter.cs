@@ -34,6 +34,9 @@ public static class TelemetryWriter
     static bool stepHeaderWritten;
     static bool episodeHeaderWritten;
 
+    static StreamWriter activationWriter;
+    static bool activationHeaderWritten;
+
     static int nextEpisodeId;
     static int rowsSinceFlush;
 
@@ -89,6 +92,18 @@ public static class TelemetryWriter
         Flush();
     }
 
+    /// <summary>
+    /// One row per moment a cheat actually fired. This is ground truth taken from the
+    /// cheat's own code path, not re-derived from the feature stream, which is what makes
+    /// it usable for checking whether a model attends to the right ticks.
+    /// </summary>
+    public static void WriteActivation(string header, StringBuilder row)
+    {
+        if (!EnsureOpen()) return;
+
+        WriteRow(activationWriter, header, ref activationHeaderWritten, row);
+    }
+
     static void WriteRow(StreamWriter writer, string header, ref bool headerWritten, StringBuilder row)
     {
         try
@@ -126,6 +141,7 @@ public static class TelemetryWriter
         {
             stepWriter?.Flush();
             episodeWriter?.Flush();
+            activationWriter?.Flush();
         }
         catch (Exception e)
         {
@@ -166,6 +182,9 @@ public static class TelemetryWriter
             episodeWriter = new StreamWriter(
                 new FileStream(Path.Combine(SessionDirectory, "episodes.csv"), FileMode.Create, FileAccess.Write, FileShare.Read, 1 << 16));
 
+            activationWriter = new StreamWriter(
+                new FileStream(Path.Combine(SessionDirectory, "activations.csv"), FileMode.Create, FileAccess.Write, FileShare.Read, 1 << 16));
+
             WriteMeta();
 
             Application.quitting += Close;
@@ -201,9 +220,11 @@ public static class TelemetryWriter
         // throws on the way out must not be left in place for the next row to retry.
         StreamWriter steps = stepWriter;
         StreamWriter episodes = episodeWriter;
+        StreamWriter activations = activationWriter;
 
         stepWriter = null;
         episodeWriter = null;
+        activationWriter = null;
 
         failed = true;
         Application.quitting -= Close;
@@ -212,6 +233,7 @@ public static class TelemetryWriter
         {
             steps?.Dispose();
             episodes?.Dispose();
+            activations?.Dispose();
         }
         catch (Exception e)
         {
@@ -234,6 +256,7 @@ public static class TelemetryWriter
         nextEpisodeId = 0;
         stepHeaderWritten = false;
         episodeHeaderWritten = false;
+        activationHeaderWritten = false;
     }
 
 #if UNITY_EDITOR
